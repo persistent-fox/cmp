@@ -54,7 +54,6 @@ export const TableRow = ({ row, parentIndex, className }: ITableRow) => {
       validationSchema={validationSchema.TableRow}
       onSubmit={async (values) => {
         if (!projectId) return;
-        console.log("res", values);
         dispatch(setSelectedIdRowAction(null));
         const newOutlay = {
           ...values,

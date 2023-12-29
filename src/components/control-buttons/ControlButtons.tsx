@@ -31,8 +31,6 @@ export const ControlButtons = ({ index, idRow }: IControlButtonsProps) => {
     return countChildrenById(outlayList, idRow);
   }, [outlayList, idRow]);
 
-  console.log("countChildren", countChildren, countChildren * 53, "idRow", idRow);
-
   const handleCreateRowInEntity = () => {
     if (!outlayList || isCreated || isUpdated) return;
     dispatch(setIsCreatedAction(true));
