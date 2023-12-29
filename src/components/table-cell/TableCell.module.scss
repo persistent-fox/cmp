@@ -1,0 +1,16 @@
+.table_cell {
+  padding: 12px;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #414144;
+  border-radius: 6px;
+  background: #202124;
+  color: #71717A;
+  &:disabled {
+    color: #FFF;
+    border: none;
+  }
+}

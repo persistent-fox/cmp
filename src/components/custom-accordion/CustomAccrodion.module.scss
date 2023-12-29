@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #A1A1AA;
+}
+.postscript {
+  font-size: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 20px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.active {
+  background: #A1A1AA;
+}

@@ -1,0 +1,9 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.table_body {
+  max-height: calc(100vh - 126px);
+}

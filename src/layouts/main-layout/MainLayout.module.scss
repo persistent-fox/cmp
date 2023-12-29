@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: calc(100% - 49px);
+  overflow: hidden;
+}
+.section {
+  width: calc(100% - 234px);
+  height: 100%;
+  background: #202124;
+}

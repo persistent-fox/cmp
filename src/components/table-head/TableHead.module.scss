@@ -1,0 +1,17 @@
+.table_head {
+  display: grid;
+  grid-template-columns: 110px 757px repeat(4, 200px);
+  height: 40px;
+  border-bottom: 1px solid #414144;
+  padding: 10px;
+}
+//
+//.head_item {
+//  width: 200px;
+//  &:first-child {
+//    width: 110px;
+//  }
+//  &:nth-child(2) {
+//    width: 757px;
+//  }
+//}

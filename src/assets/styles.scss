@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #27272A;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: #A1A1AA;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 400;
+  line-height: normal;
+}
+#root {
+  height: 100vh;
+}
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+.indicator {
+  background-color: #fff !important;
+}
+
+.accordion {
+  background-color: #27272A !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  .MuiAccordionDetails-root {
+    padding: 0;
+  }
+}
+.accordion-summary {
+  border-bottom: 1px solid #414144 !important;
+  min-height: 48px !important;
+  .Mui-expanded, .MuiAccordionSummary-content {
+    margin: 0 !important;
+  }
+  .MuiSvgIcon-root {
+    color: #FFFFFF !important;
+  }
+}
+
+
+
+
+
+
+
+ul {
+  list-style: none;
+  font-size: 20px;
+}
+.folders tr {
+  position: relative;
+  padding-top: 20px;
+}
+.folders tr::before {
+  content:"";
+  border-left: 3px solid #000;
+  position: absolute;
+  height: 100%;
+  top:0;
+  left:-30px;
+}
+
+.folders tr::after {
+  content:"";
+  border-bottom: 3px
+  solid #000;
+  position: absolute;
+  left: -30px;
+  top:30px;
+  width: 20px;
+}
+.folders tr:last-child::before{
+height: 30px;
+}
+.file {
+  position: relative;
+}
+
+.line-down {
+    position: absolute;
+    left: 50%;
+    top: 22px;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    width: 1px;
+    height: 10px;
+}
+.child {
+  .line-left {
+    position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: #FFFFFF;
+      width: 12px;
+      height: 1px;
+  }
+}
+.not-parent {
+  .line-down {
+    display: none;
+  }
+}
