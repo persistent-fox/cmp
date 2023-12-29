@@ -5,7 +5,7 @@ import { ProjectPage } from "../../pages/project/ProjectPage.tsx";
 export const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="*" element={<Navigate to={`${ERoutes.Project}/115972`} />} />
+      <Route path="*" element={<Navigate to={`${ERoutes.Project}/116513`} />} />
       <Route path={`${ERoutes.Project}/:projectId`} element={<ProjectPage />} />
     </Routes>
   );
