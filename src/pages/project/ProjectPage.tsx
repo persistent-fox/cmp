@@ -21,13 +21,9 @@ export const ProjectPage = () => {
     (async () => {
       if (!projectId) return;
       const data = await getOutlayList({ eID: projectId });
-      // if (data?.length) {
       dispatch(setOutlayListAction(data));
-      // } else {
-      //   dispatch(setOutlayListAction([{ ...defaultRow }]));
-      // }
     })();
-  }, []);
+  }, [projectId]);
 
   return (
     <MainLayout>
