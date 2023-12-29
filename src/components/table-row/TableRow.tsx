@@ -97,6 +97,8 @@ export const TableRow = ({ row, parentIndex, className }: ITableRow) => {
                   name={key}
                   id={row.id}
                   key={key}
+                  //TODO: Нужно правильно описать
+                    //@ts-ignore
                   error={props.errors[key]}
                 />
               );
