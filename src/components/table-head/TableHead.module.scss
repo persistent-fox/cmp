@@ -2,6 +2,11 @@
   display: grid;
   height: 40px;
   padding: 10px 0 0;
+  position: sticky;
+  top: 0;
+  background: #202124;
+  z-index: 2;
+  width: 1757px;
 }
 
 .head_item {

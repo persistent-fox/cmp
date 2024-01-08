@@ -1,9 +1,9 @@
 .table {
-  display: flex;
-  flex-direction: column;
   overflow-x: auto;
+  width: 100%;
 }
 
 .table_body {
-  max-height: calc(100vh - 152px);
+  height: calc(100vh - 152px);
+  width: 100%;
 }
