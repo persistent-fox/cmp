@@ -26,9 +26,10 @@ interface ITableRow {
   row: IOutlay;
   parentIndex: number;
   className?: string;
+  maxDepth: number
 }
 
-export const TableRow = ({ row, parentIndex, className }: ITableRow) => {
+export const TableRow = ({ row, parentIndex, className, maxDepth }: ITableRow) => {
   const dispatch = useAppDispatch();
   const selectedIdRow = useSelector(selectedIdRowSelector);
   const outlayList = useSelector(outlayListSelector);
@@ -86,6 +87,7 @@ export const TableRow = ({ row, parentIndex, className }: ITableRow) => {
             onSubmit={props.handleSubmit}
             onDoubleClick={handleDoubleClick}
             className={cn(styles.table_row, className)}
+            style={{gridTemplateColumns: `${60 + (maxDepth * 20)}px 757px repeat(4, 200px)`}}
           >
             <ControlButtons idRow={row.id} index={parentIndex} />
             {Object.entries(props.values).map(([key, value]) => {

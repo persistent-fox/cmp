@@ -1,3 +1,9 @@
+.wrapper{
+  border-bottom: 1px solid #414144;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
 .icons {
   display: inline-flex;
   justify-content: center;
@@ -10,12 +16,14 @@
     background: #414144;
     .trash {
       display: block;
+      cursor: pointer;
     }
   }
 }
 
 .button {
   color: #7890B2;
+  cursor: pointer;
 }
 
 .trash {

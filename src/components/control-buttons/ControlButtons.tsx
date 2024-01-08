@@ -25,7 +25,6 @@ export const ControlButtons = ({ index, idRow }: IControlButtonsProps) => {
   const isUpdated = useSelector(isUpdatedSelector);
   const outlayList = useSelector(outlayListSelector);
   const { projectId } = useParams();
-
   const countChildren = useMemo(() => {
     if (!outlayList || !idRow) return 0;
     return countChildrenById(outlayList, idRow);
@@ -55,10 +54,10 @@ export const ControlButtons = ({ index, idRow }: IControlButtonsProps) => {
   };
 
   return (
-    <div style={{ marginLeft: `${index * 20}px` }}>
+    <div className={styles.wrapper} style={{ paddingLeft: `${(index * 20) + 15}px` }}>
       <div className={styles.icons}>
         <button type="button" className={cn(styles.button, "file")} onClick={handleCreateRowInEntity}>
-          <span className="line-down" style={{ height: `${countChildren * 59}px` }}></span>
+          <span className="line-down" style={{ height: `${countChildren * 52+ ((countChildren - 1 )* 8)}px` }}></span>
           <span className="line-left"></span>
           <DescriptionIcon />
         </button>

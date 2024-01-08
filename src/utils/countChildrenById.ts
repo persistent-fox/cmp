@@ -1,45 +1,46 @@
 import { IOutlay } from "../types/interfaces/entities/outlay.ts";
 
 export function countChildrenById(objArray: IOutlay[], targetId: number): number {
-  let foundObject: IOutlay | undefined;
+  function countRecursive(node: IOutlay): void {
+    total += 1;  // Увеличиваем счетчик для текущего узла
 
-  function findObjectById(arr: IOutlay[], id: number): IOutlay | undefined {
-    for (const obj of arr) {
-      if (obj.id === id) {
-        foundObject = obj;
-        return obj;
-      }
-      if (obj.child.length > 0) {
-        findObjectById(obj.child, id);
+    // Рекурсивно обрабатываем детей, исключая детей последнего ребенка
+    if (node.child && node !== lastChild) {
+      for (const child of node.child) {
+        countRecursive(child);
       }
     }
-    return undefined;
   }
 
-  findObjectById(objArray, targetId);
+  let total = 0;  // Инициализируем счетчик
+  let lastChild: IOutlay | null = null;  // Протипизированный параметр lastChild
 
-  if (!foundObject) {
-    return 0;
-  }
-
-  function countChildrenRecursive(obj: IOutlay): number {
-    if (obj.child.length === 0) {
-      return 1;
+  function findNodeById(currentNode: IOutlay): IOutlay | null {
+    if (currentNode.id === targetId) {
+      return currentNode;
     }
 
-    let count = 1;
-
-    for (let i = 0; i < obj.child.length; i++) {
-      const child = obj.child[i];
-      count += countChildrenRecursive(child);
+    // Рекурсивно ищем вложенные узлы
+    if (currentNode.child) {
+      for (const child of currentNode.child) {
+        const foundNode = findNodeById(child);
+        if (foundNode) {
+          return foundNode;
+        }
+      }
     }
 
-    return count;
+    return null;
   }
 
-  if (foundObject.child.length === 1) {
-    return 1;
+  // Находим узел с заданным ID в массиве или его вложенных узлах
+  const targetNode = findNodeById(objArray[0]);  // Предполагается, что objArray[0] - это корневой объект
+
+  if (targetNode) {
+    const children = targetNode.child || [];
+    lastChild = children[children.length - 1];  // Записываем последнего ребенка
+    countRecursive(targetNode);
   }
 
-  return countChildrenRecursive(foundObject) - 1;
+  return total - 1;  // Вычитаем 1, чтобы не учитывать предков последнего ребенка
 }
