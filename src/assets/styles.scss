@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
   box-sizing: border-box;
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+    background-color: #27272A;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #A1A1AA;
+  }
 }
 body {
   background: #27272A;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: normal;

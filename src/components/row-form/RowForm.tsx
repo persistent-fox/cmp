@@ -1,15 +1,4 @@
-import styles from "./TableRow.module.scss";
 import { useAppDispatch } from "../../store/hooks.ts";
-import {
-  setIsCreatedAction,
-  setIsUpdatedAction,
-  setOutlayListAction,
-  setSelectedIdRowAction,
-} from "../../store/actions/outlay.ts";
-import { IOutlay } from "../../types/interfaces/entities/outlay.ts";
-import { TableCell } from "../table-cell/TableCell.tsx";
-import { ControlButtons } from "../control-buttons/ControlButtons.tsx";
-import { Formik } from "formik";
 import { useSelector } from "react-redux";
 import {
   isCreatedSelector,
@@ -17,19 +6,32 @@ import {
   outlayListSelector,
   selectedIdRowSelector,
 } from "../../store/selectors/outlay.ts";
+import { useParams } from "react-router-dom";
+import {
+  setIsCreatedAction,
+  setIsUpdatedAction,
+  setOutlayListAction,
+  setSelectedIdRowAction,
+} from "../../store/actions/outlay.ts";
+import { Formik } from "formik";
+import { validationSchema } from "../../config/validationSchema.ts";
 import { createOutlay, updateRow } from "../../api/outlay.ts";
 import { updateObjectById } from "../../utils/updateObjectById.ts";
-import { useParams } from "react-router-dom";
-import { validationSchema } from "../../config/validationSchema.ts";
 import cn from "classnames";
-interface ITableRow {
+import styles from "./RowForm.module.scss";
+import { ControlButtons } from "../control-buttons/ControlButtons.tsx";
+import { TableCell } from "../table/table-cell/TableCell.tsx";
+import { IOutlay } from "../../types/interfaces/entities/outlay.ts";
+import { TextField } from "../text-field/TextField.tsx";
+
+interface IRowFormProps {
   row: IOutlay;
   parentIndex: number;
   className?: string;
-  maxDepth: number
+  maxDepth: number;
 }
 
-export const TableRow = ({ row, parentIndex, className, maxDepth }: ITableRow) => {
+export const RowForm = ({ row, parentIndex, className, maxDepth }: IRowFormProps) => {
   const dispatch = useAppDispatch();
   const selectedIdRow = useSelector(selectedIdRowSelector);
   const outlayList = useSelector(outlayListSelector);
@@ -86,22 +88,23 @@ export const TableRow = ({ row, parentIndex, className, maxDepth }: ITableRow) =
           <form
             onSubmit={props.handleSubmit}
             onDoubleClick={handleDoubleClick}
-            className={cn(styles.table_row, className)}
-            style={{gridTemplateColumns: `${60 + (maxDepth * 20)}px 757px repeat(4, 200px)`}}
+            className={cn(styles.wrapper, className)}
+            style={{ gridTemplateColumns: `${60 + maxDepth * 20}px 757px repeat(4, 200px)` }}
           >
             <ControlButtons idRow={row.id} index={parentIndex} />
             {Object.entries(props.values).map(([key, value]) => {
               return (
-                <TableCell
-                  handleChange={(val) => props.setFieldValue(key, val)}
-                  value={value.toString() || ""}
-                  name={key}
-                  id={row.id}
-                  key={key}
-                  //TODO: Нужно правильно описать
+                <TableCell key={key}>
+                  <TextField
+                    isDisabled={selectedIdRow !== row.id}
+                    handleChange={(val) => props.setFieldValue(key, val)}
+                    value={value.toString() || ""}
+                    name={key}
+                    //TODO: Нужно правильно описать
                     //@ts-ignore
-                  error={props.errors[key]}
-                />
+                    error={props.errors[key]}
+                  />
+                </TableCell>
               );
             })}
             <input style={{ display: "none" }} type="submit" />

@@ -1,8 +1,3 @@
-.table_cell {
-  padding: 12px;
-  border-bottom: 1px solid #414144;
-}
-
 .input {
   padding: 10px;
   width: 100%;
@@ -10,6 +5,8 @@
   border-radius: 6px;
   background: #202124;
   color: #71717A;
+  margin-bottom: 5px;
+
   &:disabled {
     color: #FFF;
     border: none;

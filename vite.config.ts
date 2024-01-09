@@ -1,8 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.VITE_BASE_PATH || '/deploy_react_app_github_pages_vercel',
-})
+  css: {
+    modules: {
+      localsConvention: "camelCase",
+      generateScopedName: "[name]__[local]__[hash:base64:3]",
+    },
+  },
+  base: process.env.VITE_BASE_PATH || "/deploy_react_app_github_pages_vercel",
+});
